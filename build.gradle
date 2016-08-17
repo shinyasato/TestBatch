@@ -1,0 +1,49 @@
+buildscript {
+  ext {
+    springBootVersion = '1.4.0.RELEASE'
+  }
+
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+    maven {
+      url "http://repo.spring.io/plugins-release"
+    }
+  }
+
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+jar {
+  baseName = 'testbatch'
+  version = ''
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+  // sass
+  maven {
+    url "https://plugins.gradle.org/m2/"
+  }
+}
+
+dependencies {
+  compile('org.springframework.boot:spring-boot-starter-batch')
+  runtime('mysql:mysql-connector-java:5.1.39')
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.9'
+}
