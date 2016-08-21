@@ -4,9 +4,9 @@ spring:
     url: "jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useSSL=false&elideSetAutoCommits=true"
     username: test
     password: test
-#  batch:
-#    job:
-#      enabled: false
+  batch:
+    job:
+      enabled: false
 #  batch:
 #    job:
 #      enabled: false

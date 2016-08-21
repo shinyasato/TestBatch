@@ -41,6 +41,7 @@ repositories {
 
 dependencies {
   compile('org.springframework.boot:spring-boot-starter-batch')
+  compile('org.springframework.boot:spring-boot-starter-web')
   runtime('mysql:mysql-connector-java:5.1.39')
 }
 

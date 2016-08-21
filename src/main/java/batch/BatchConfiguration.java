@@ -30,7 +30,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableBatchProcessing
 @EnableAutoConfiguration
-public class BatchConfiguration implements CommandLineRunner {
+public class BatchConfiguration {
+//    public class BatchConfiguration implements CommandLineRunner {
 
     @Autowired
     private JobLauncher jobLauncher;
@@ -59,39 +60,39 @@ public class BatchConfiguration implements CommandLineRunner {
                 .build();
     }
 
-    public static void main(String [] args) {
-            System.exit(SpringApplication.exit(SpringApplication.run(BatchConfiguration.class, args)));
-    }
-
-    @Override
-    public void run(String... args) {
-
-        System.out.println("start...");
-        Arrays.stream(args).forEach(System.out::println);
-
-        JobParametersBuilder builder = new JobParametersBuilder();
-        builder.addDate("run.date", Date.from(LocalDateTime.of(2016, 8, 1, 00, 00, 00).atZone(ZoneId.systemDefault()).toInstant()));
-
-        try {
-            jobLauncher.run(job(step1()), builder.toJobParameters());
-        } catch (JobExecutionAlreadyRunningException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (JobRestartException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (JobInstanceAlreadyCompleteException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (JobParametersInvalidException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println("end...");
-    }
+//    public static void main(String [] args) {
+//            System.exit(SpringApplication.exit(SpringApplication.run(BatchConfiguration.class, args)));
+//    }
+//
+//    @Override
+//    public void run(String... args) {
+//
+//        System.out.println("start...");
+//        Arrays.stream(args).forEach(System.out::println);
+//
+//        JobParametersBuilder builder = new JobParametersBuilder();
+//        builder.addDate("run.date", Date.from(LocalDateTime.of(2016, 8, 1, 00, 00, 00).atZone(ZoneId.systemDefault()).toInstant()));
+//
+//        try {
+//            jobLauncher.run(job(step1()), builder.toJobParameters());
+//        } catch (JobExecutionAlreadyRunningException e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        } catch (JobRestartException e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        } catch (JobInstanceAlreadyCompleteException e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        } catch (JobParametersInvalidException e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        }
+//
+//        System.out.println("end...");
+//    }
 
 }
